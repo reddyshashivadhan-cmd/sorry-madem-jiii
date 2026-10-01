@@ -118,9 +118,9 @@
   <!-- Lock Screen -->
   <div id="lock-screen" class="container">
     <h2>Hey Hasvitha ❤️</h2>
-    <p>Please enter your secret nickname to unlock:</p>
-    <input type="password" id="password-input" placeholder="Enter password...">
-    <p id="error-message" class="error-msg hidden">Incorrect password! Hint: Your nickname 😉</p>
+    <p>Please enter your BF's nickname to unlock:</p>
+    <input type="password" id="password-input" placeholder="Enter nickname...">
+    <p id="error-message" class="error-msg hidden">Incorrect password! Hint: The website creator's nickname 😉</p>
     <button onclick="checkPassword()">Unlock</button>
   </div>
 
@@ -159,8 +159,8 @@
       const password = document.getElementById('password-input').value.trim();
       const errorMsg = document.getElementById('error-message');
       
-      // Passwords accepted: 'hasvitha' or 'nani' (case-insensitive)
-      if (password.toLowerCase() === 'nani' || password.toLowerCase() === 'hasvitha') {
+      // Password set to 'nani' (case-insensitive)
+      if (password.toLowerCase() === 'nani') {
         document.getElementById('lock-screen').classList.add('hidden');
         document.getElementById('main-content').classList.remove('hidden');
       } else {
