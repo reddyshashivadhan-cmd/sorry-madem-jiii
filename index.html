@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Hasvitha ❤️</title>
+  <style>
+    :root {
+      --bg-color: #ffeef2;
+      --card-bg: #ffffff;
+      --primary-color: #ff4b72;
+      --text-color: #4a4a4a;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 75, 114, 0.15);
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="password"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ffd1dc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="password"]:focus,
+    textarea:focus {
+      border-color: var(--primary-color);
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #e03a5f;
+      transform: scale(1.03);
+    }
+
+    .btn-secondary {
+      background-color: #b0b0b0;
+    }
+
+    .btn-secondary:hover {
+      background-color: #999999;
+    }
+
+    .error-msg {
+      color: #e74c3c;
+      font-size: 0.9rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .signature {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lock Screen -->
+  <div id="lock-screen" class="container">
+    <h2>Hey Hasvitha ❤️</h2>
+    <p>Please enter your secret nickname to unlock:</p>
+    <input type="password" id="password-input" placeholder="Enter password...">
+    <p id="error-message" class="error-msg hidden">Incorrect password! Hint: Your nickname 😉</p>
+    <button onclick="checkPassword()">Unlock</button>
+  </div>
+
+  <!-- Main Content Screen -->
+  <div id="main-content" class="container hidden">
+    <h2>Why are you so sad? 🥺</h2>
+    <p>
+      Sorry Hasvitha, I really don't know what mistake I did... <br>
+      Please tell me what happened so I can fix it!
+    </p>
+
+    <div id="options-step">
+      <p><strong>If you cool down, do you want to leave a note?</strong></p>
+      <button onclick="showNoteArea()">Keep a note 📝</button>
+      <button class="btn-secondary" onclick="showFinalMessage(false)">Don't keep note today 🙈</button>
+    </div>
+
+    <!-- Note Input Area -->
+    <div id="note-step" class="hidden">
+      <textarea id="note-input" placeholder="Type your message here..."></textarea>
+      <button onclick="submitNote()">Send Note</button>
+    </div>
+
+    <!-- Final Display Message -->
+    <div id="final-step" class="hidden">
+      <p id="submitted-note-display" class="hidden"></p>
+      <p style="font-size: 1.3rem; font-weight: bold;">
+        SORRYYYYY MADAM JIII! 🙏❤️
+      </p>
+      <p class="signature">- Nani</p>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password-input').value.trim();
+      const errorMsg = document.getElementById('error-message');
+      
+      // Passwords accepted: 'hasvitha' or 'nani' (case-insensitive)
+      if (password.toLowerCase() === 'nani' || password.toLowerCase() === 'hasvitha') {
+        document.getElementById('lock-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    }
+
+    function showNoteArea() {
+      document.getElementById('options-step').classList.add('hidden');
+      document.getElementById('note-step').classList.remove('hidden');
+    }
+
+    function submitNote() {
+      const noteText = document.getElementById('note-input').value;
+      if (noteText.trim() !== '') {
+        const display = document.getElementById('submitted-note-display');
+        display.innerText = `Your note: "${noteText}"`;
+        display.classList.remove('hidden');
+      }
+      showFinalMessage(true);
+    }
+
+    function showFinalMessage(hasNote) {
+      document.getElementById('options-step').classList.add('hidden');
+      document.getElementById('note-step').classList.add('hidden');
+      document.getElementById('final-step').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
